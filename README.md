@@ -1,2 +1,28 @@
 # viva-voce
-An Alexa skill for making flashcards
+
+### About
+Review topics with auditory flashcards. Not only that, manage your flashcard decks by creating more, deleting unused ones, or editing them to perfection. Optimise your learning experience, by removing the hassle of writing flashcards. 
+
+### TODO
+- [ ] Review mode
+  - [ ] Basic
+  - [ ] Advanced
+    -	[ ] User Correction
+    - [ ] Premature Session End
+    - [ ] Deck Search Help
+    - [ ] Question repetition
+- [ ] Create mode
+  - [ ]	Basic
+  - [ ]	Advanced
+    - [ ] TODO
+- [ ] Delete mode
+  - [ ] Basic
+  - [ ] Advanced
+    - [ ] TODO
+- [ ] Edit mode
+  - [ ] Basic
+  - [ ] Advanced
+    - [ ] TODO
+     
+### User limits
+A user can at most hold __5 decks__, each containing a maximum of __20 cards__. Card questions and answers can at most be __10 words__ in length.
