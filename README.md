@@ -7,24 +7,35 @@ Review topics with auditory flashcards. Not only that, manage your flashcard dec
 
 ### TODO
 - [ ] Review mode
+  <details> 
+  <summary>Basic</summary>
+ 
+  -	[ ] Locate deck
+  - [ ] Give questions
+  - [ ] React to answers
+  - [ ] Give score
+  
+  </details>
+  
+  <details> 
+  <summary>Advanced</summary>
+ 
+  -	[ ] User Correction
+  - [ ] Premature Session End
+  - [ ] Deck Search Help
+  - [ ] Question repetition  
+  
+  </details>
+
+- [ ] Create mode
   - [ ] Basic
   - [ ] Advanced
-    -	[ ] User Correction
-    - [ ] Premature Session End
-    - [ ] Deck Search Help
-    - [ ] Question repetition
-- [ ] Create mode
-  - [ ]	Basic
-  - [ ]	Advanced
-    - [ ] __TODO__
 - [ ] Delete mode
   - [ ] Basic
   - [ ] Advanced
-    - [ ] __TODO__
 - [ ] Edit mode
   - [ ] Basic
   - [ ] Advanced
-    - [ ] __TODO__
      
 ### User limits
 A user can at most hold __5 decks__, each containing a maximum of __20 cards__. Card questions and answers can at most be __10 words__ in length.
