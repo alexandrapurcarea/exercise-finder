@@ -1,6 +1,5 @@
-# viva-voce
 
-### About
+# Viva Voce
 Review topics with auditory flashcards. Not only that, manage your flashcard decks by creating more, deleting unused ones, or editing them to perfection. Optimise your learning experience, by removing the hassle of writing flashcards. 
 
 ### TODO
@@ -14,15 +13,15 @@ Review topics with auditory flashcards. Not only that, manage your flashcard dec
 - [ ] Create mode
   - [ ]	Basic
   - [ ]	Advanced
-    - [ ] TODO
+    - [ ] __TODO__
 - [ ] Delete mode
   - [ ] Basic
   - [ ] Advanced
-    - [ ] TODO
+    - [ ] __TODO__
 - [ ] Edit mode
   - [ ] Basic
   - [ ] Advanced
-    - [ ] TODO
+    - [ ] __TODO__
      
 ### User limits
 A user can at most hold __5 decks__, each containing a maximum of __20 cards__. Card questions and answers can at most be __10 words__ in length.
