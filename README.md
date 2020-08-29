@@ -1,3 +1,6 @@
+<p align="center">
+ <img src="/docs/Icon.png" width="175" height="175" >
+</p> 
 
 # Viva Voce
 Review topics with auditory flashcards. Not only that, manage your flashcard decks by creating more, deleting unused ones, or editing them to perfection. Optimise your learning experience, by removing the hassle of writing flashcards. 
