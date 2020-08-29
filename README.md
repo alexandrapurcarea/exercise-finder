@@ -20,9 +20,9 @@ Review topics with auditory flashcards. Not only that, manage your flashcard dec
   <details> 
   <summary>Advanced</summary>
  
-  -	[ ] User Correction
-  - [ ] Premature Session End
-  - [ ] Deck Search Help
+  -	[ ] User correction
+  - [ ] Premature session end
+  - [ ] Deck search help
   - [ ] Question repetition  
   
   </details>
