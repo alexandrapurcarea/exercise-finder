@@ -23,7 +23,8 @@ Review topics with auditory flashcards. Not only that, manage your flashcard dec
   -	[ ] User correction
   - [ ] Premature session end
   - [ ] Deck search help
-  - [ ] Question repetition  
+  - [ ] Question repetition
+  - [ ] Visualise cards
   
   </details>
 
