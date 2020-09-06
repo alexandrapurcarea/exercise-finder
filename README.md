@@ -2,7 +2,9 @@
  <img src="/docs/Icon.png" width="200" height="200" >
 </p> 
 
-[![Build Status](https://travis-ci.com/alexandrapurcarea/viva-voce.svg?token=6xymSqzTey1a1nyeaEG9&branch=master)](https://travis-ci.com/alexandrapurcarea/viva-voce)
+<p align="center">
+ <a href="https://travis-ci.com/alexandrapurcarea/viva-voce" alt="Build Status">
+     <img src="https://travis-ci.com/alexandrapurcarea/viva-voce.svg?token=6xymSqzTey1a1nyeaEG9&branch=master" /></a>
 
 # Exercise Finder
 An Alexa Skill which finds exercises which match your preference of body part or muscle and equipment.
