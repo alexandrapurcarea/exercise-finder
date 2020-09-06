@@ -1,5 +1,5 @@
 <p align="center">
- <img src="/docs/Icon.png" width="175" height="175" >
+ <img src="/docs/Icon.png" width="200" height="200" >
 </p> 
 
 # Exercise Finder
