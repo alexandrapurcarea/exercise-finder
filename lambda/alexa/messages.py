@@ -5,16 +5,14 @@ import random
 
 # Welcome
 
-WELCOME_MSG_START = ("Welcome to Viva Voce! " 
-                    "Review your topics with flashcards, or ")
+WELCOME_MSG_START = ("Welcome to Exercise Finder! " 
+                     "Find an exercise which meets your requirements. ")
 
 WELCOME_MSG_MIDDLES = [ 
-    "edit your decks by adding new cards.",
-    "perfect a deck with a few new additions. ",
-    "create completely new flashcard decks. ",
-    "learn a new topic by creating a new deck. ",
-    "remove your unused flashcard decks. ",
-    "get rid of one of those unused decks. ",
+    "You can specify by the body part or muscle you want to use.",
+    "I can take into account the equipment you have available. ",
+    "Choose based on the muscle or body part you want to strengthen. ",
+    "Only have certain types of equipment? no problem."
     ]
 
 WELCOME_MSG_END = "What do you want to do?"
@@ -31,26 +29,26 @@ def welcome_message():
 
 
 # Help
-HELP_MSG = ("I can quiz you on a deck you have created, "
-             "edit it with new cards, or"
-             "remove it from your library. "
-             "If you want to learn something new, "
-             "I can help you create a completely new deck. "
-             "Also, if you have forgotten the name of your decks, "
-             "just ask, and I'll give you a quick rundown.") 
+HELP_MSG = ("I can help you find an exercise which matches your preferences, "
+            "with respect to body part or muscle and equipment.") 
 
 # Fallback
 FALLBACK_MSG = "Sorry, I can't do that. However, {}".format(HELP_MSG)
 
 # Exit
 
-EXIT_MSG_START = ("Thank you for using Viva Voce. ")
+EXIT_MSG_START = ("Thank you for using exercise finder. ")
 
 EXIT_MSG_ENDS = [
     "Practice makes perfect!"
-    "Genius is one percent inspiration, ninety-nine percent perspiration!"
+    "The clock is ticking. Are you becoming the person you want to be?"
     "There are no shortcuts to any place worth going."
     "The secret of getting ahead is getting started."
+    "What hurts today makes you stronger tomorrow."
+    "No pain, no gain."
+    "Your body can stand almost anything. It’s your mind that you have to convince."
+    "Good things come to those who sweat."
+    "What seems impossible today will one day become your warm-up."
     "Till next time"
     "See you again!"
     "Goodbye!"
