@@ -1,0 +1,205 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "exercise finder",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "howdy",
+            "hi",
+            "how are you",
+            "hello"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "dummy value"
+              }
+            }
+          ],
+          "name": "stringLiteral"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "calves",
+                "synonyms": [
+                  "calf",
+                  "shins"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "shoulders",
+                "synonyms": [
+                  "shoulder"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "back",
+                "synonyms": [
+                  "spine"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "chest",
+                "synonyms": [
+                  "pecs"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "abs",
+                "synonyms": [
+                  "ab",
+                  "core"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "legs",
+                "synonyms": [
+                  "leg",
+                  "quads",
+                  "thighs"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "arms",
+                "synonyms": [
+                  "arm"
+                ]
+              }
+            }
+          ],
+          "name": "bodyPart"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "none",
+                "synonyms": [
+                  "body weight",
+                  "no equipment",
+                  "bodyweight"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "SZ-bar",
+                "synonyms": [
+                  "easy bar",
+                  "EZ bar",
+                  "E Z bar"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "pull-up bar",
+                "synonyms": [
+                  "pull up bar"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "kettlebell",
+                "synonyms": [
+                  "handle weight"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "incline bench"
+              }
+            },
+            {
+              "name": {
+                "value": "gym mat",
+                "synonyms": [
+                  "mat",
+                  "yoga mat"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "dumbbell",
+                "synonyms": [
+                  "hand weight"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "bench"
+              }
+            },
+            {
+              "name": {
+                "value": "barbell"
+              }
+            }
+          ],
+          "name": "equipment"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "dummy"
+              }
+            }
+          ],
+          "name": "exerciseName"
+        }
+      ],
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      }
+    }
+  },
+  "version": "2"
+}
