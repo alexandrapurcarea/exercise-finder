@@ -10,5 +10,5 @@
 An Alexa Skill which finds exercises which match your preference of body part or muscle and equipment.
 
 ### TODO
-- [ ] Create Alexa conversation model for finding exercises
+- [x] Create Alexa conversation model for finding exercises
 - [ ] Implement Wger API
