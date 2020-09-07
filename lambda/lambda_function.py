@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from alexa import messages
+from alexa import extra_ask_utils, wger_api, messages
 
 import logging
 import json
 
 from ask_sdk_model import Response
+from ask_sdk_model.slu.entityresolution import StatusCode
 
 import ask_sdk_core.utils as ask_utils
-
 from ask_sdk_core.serialize import DefaultSerializer
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.handler_input import HandlerInput
@@ -23,6 +23,70 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
+# Custom Request Handlers
+
+class getRecommendationAPIHandler(AbstractRequestHandler):
+    """Handler for getRecommendation API requests."""
+
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return (
+            ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
+                and extra_ask_utils.is_api_request_name("getRecommendation")(handler_input) 
+        )
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In GetRecommendationAPIHandler")
+        
+        apiRequest = handler_input.request_envelope.request.api_request
+        
+        bodyPart = resolveEntity(apiRequest.slots, "bodyPart")
+        equipment = resolveEntity(apiRequest.slots, "equipment")
+        
+        recommendationEntity = {}
+        if (bodyPart != None) and (equipment != None):
+            recommendationEntity["bodyPart"] = bodyPart
+            recommendationEntity["equipment"] = equipment
+
+            api_response_exercise = wger_api.exercise_finder(bodyPart, equipment)
+            logger.info("Response from Wger API: {}".format(api_response_exercise))
+
+            recommendationEntity["ExerciseName"] = api_response_exercise["name"]
+            
+        response = extra_ask_utils.build_success_api_response(recommendationEntity)
+        return response
+
+
+class GetDescriptionAPIHandler(AbstractRequestHandler):
+    """Handler for getDescription API requests."""
+    
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ( ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
+             and extra_ask_utils.is_api_request_name("getDescription")(handler_input))
+         
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In GetDescriptionAPIHandler")
+        
+        recommendationResult = handler_input.request_envelope.request.api_request.arguments['recommendationResult']
+        
+        api_response = "I don't know much about {}.".format(recommendationResult["name"])
+        
+        exerciseName = recommendationResult["exerciseName"]
+        
+        descriptionEntity = {}
+        if (exerciseName != None):
+            api_response = wger_api.exercise_info(exercise_name)
+            logger.info("Response from Wger API: {}".format(api_response))
+                
+            descriptionEntity["description"] = api_response["description"]
+        
+        response = extra_ask_utils.build_success_api_response(descriptionEntity)
+        return response
+
+
 # Standard Request Handlers
 
 class LaunchRequestHandler(AbstractRequestHandler):
@@ -30,7 +94,6 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-
         return ask_utils.is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
@@ -224,6 +287,28 @@ class ResponseLogger(AbstractResponseInterceptor):
     def process(self, handler_input, response):
         # type: (HandlerInput, Response) -> None
         logger.info('Response generated: {}'.format(response))
+
+
+# Utilities
+
+
+def resolveEntity(resolvedEntity, slot):
+    """Resolve the slot name from the API request resolutions."""
+    # type: (ResolvedEntity, str) -> str
+    
+    value = None
+    
+    try:
+        erAuthorityResolution = resolvedEntity[slot].resolutions.resolutions_per_authority[0]
+        
+        if (erAuthorityResolution.status.code == StatusCode.ER_SUCCESS_MATCH):
+            value = erAuthorityResolution.values[0].value.name
+            
+    except (AttributeError, ValueError, KeyError, IndexError, TypeError) as e:
+        logger.info("Couldn't resolve {} from slots: {}".format(slot, resolvedEntity))
+        logger.info(str(e))
+        
+    return value   
 
 
 # Skillbuilder 

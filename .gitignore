@@ -1,7 +1,5 @@
 ask-resources.json
 .ask
 .vscode
-lambda/node_modules
-.pytest_cache
-lambda/alexa/__pycache__
-lambda/alexa/test/__pycache__
+*.pytest_cache
+*__pycache__
