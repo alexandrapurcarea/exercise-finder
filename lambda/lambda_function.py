@@ -12,10 +12,12 @@ import ask_sdk_core.utils as ask_utils
 from ask_sdk_core.serialize import DefaultSerializer
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.handler_input import HandlerInput
-from ask_sdk_core.dispatch_components import ( AbstractRequestHandler
-                                             , AbstractExceptionHandler
-                                             , AbstractResponseInterceptor
-                                             , AbstractRequestInterceptor )
+from ask_sdk_core.dispatch_components import ( 
+    AbstractRequestHandler, 
+    AbstractExceptionHandler, 
+    AbstractResponseInterceptor, 
+    AbstractRequestInterceptor 
+)
 
 
 # Logger
@@ -41,8 +43,8 @@ class getRecommendationAPIHandler(AbstractRequestHandler):
         
         apiRequest = handler_input.request_envelope.request.api_request
         
-        bodyPart = resolveEntity(apiRequest.slots, "bodyPart")
-        equipment = resolveEntity(apiRequest.slots, "equipment")
+        bodyPart = resolveEntity(apiRequest.slots, "bodyPart").capitalize()
+        equipment = resolveEntity(apiRequest.slots, "equipment").capitalize()
         
         recommendationEntity = {}
         if (bodyPart != None) and (equipment != None):
@@ -63,8 +65,10 @@ class GetDescriptionAPIHandler(AbstractRequestHandler):
     
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return ( ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
-             and extra_ask_utils.is_api_request_name("getDescription")(handler_input))
+        return (
+            ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
+            and extra_ask_utils.is_api_request_name("getDescription")(handler_input)
+        )
          
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
@@ -218,30 +222,6 @@ class RepeatHandler(AbstractRequestHandler):
             )
 
 
-# Debugging Handler
-class IntentReflectorHandler(AbstractRequestHandler):
-    """The intent reflector is used for interaction model testing and debugging.
-    It will simply repeat the intent the user said. You can create custom handlers
-    for your intents by defining them above, then also adding them to the request
-    handler chain below.
-    """
-
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_request_type("IntentRequest")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        intent_name = ask_utils.get_intent_name(handler_input)
-        speak_output = "You just triggered " + intent_name + "."
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .response
-        )
-
-
 # Exception Handler
 class CatchAllExceptionHandler(AbstractExceptionHandler):
     """Generic error handling to capture any syntax or routing errors."""
@@ -314,6 +294,10 @@ def resolveEntity(resolvedEntity, slot):
 # Skillbuilder 
 sb = SkillBuilder()
 
+# Custom 
+sb.add_request_handler(getRecommendationAPIHandler())
+sb.add_request_handler(GetDescriptionAPIHandler)
+
 # Standard
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(HelpIntentHandler())
@@ -321,9 +305,6 @@ sb.add_request_handler(FallbackIntentHandler())
 sb.add_request_handler(ExitIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_request_handler(RepeatHandler())
-
-# make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
-sb.add_request_handler(IntentReflectorHandler())
 
 # Exceptions
 sb.add_exception_handler(CatchAllExceptionHandler())
