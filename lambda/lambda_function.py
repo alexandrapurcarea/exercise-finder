@@ -54,7 +54,7 @@ class getRecommendationAPIHandler(AbstractRequestHandler):
             api_response_exercise = wger_api.exercise_finder(bodyPart, equipment)
             logger.info("Response from Wger API: {}".format(api_response_exercise))
 
-            recommendationEntity["ExerciseName"] = api_response_exercise["name"]
+            recommendationEntity["exerciseName"] = api_response_exercise["name"]
             
         response = extra_ask_utils.build_success_api_response(recommendationEntity)
         return response
@@ -85,7 +85,7 @@ class GetDescriptionAPIHandler(AbstractRequestHandler):
             api_response = wger_api.exercise_info(exercise_name)
             logger.info("Response from Wger API: {}".format(api_response))
                 
-            descriptionEntity["description"] = api_response["description"]
+            descriptionEntity["description"] = messages.format_description(api_response["description"])
         
         response = extra_ask_utils.build_success_api_response(descriptionEntity)
         return response
