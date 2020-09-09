@@ -14,10 +14,9 @@ def is_api_request_name(name):
         )
         
     return can_handle_wrapper
- 
+
 
 def build_success_api_response(returnEntity):
     """Return a formatted API response."""
     # type: (dict[str, str], str) -> dict[str, dict[str, str]]
-    
     return { "apiResponse" : returnEntity }
