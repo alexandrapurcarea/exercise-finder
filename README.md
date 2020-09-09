@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.com/alexandrapurcarea/exercise-finder.svg?token=6xymSqzTey1a1nyeaEG9&branch=master)](https://travis-ci.com/alexandrapurcarea/exercise-finder)
 
 # Exercise Finder
-An Alexa Skill which finds exercises which match your preference of body part or muscle and equipment.
+An Alexa Skill which finds exercises matching your preference of body part or muscle and equipment.
 
 ### TODO
 - [x] Create Alexa conversation model for finding exercises
