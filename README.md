@@ -37,8 +37,6 @@ We would love to implement **stretch recommendations**, **full workout plans** (
 - **User experience**
  - [x] Make existing prompts sound more natural.
  - [x] Improve help messages for equipment and body part requests (enumerate all options).
- - **Edge cases**
- - [ ] Create handling for failed success matches of slot values.
 - **New Features**
  - [ ] Allow for users to give muscles as input.
  - [ ] Allow for users to reprompt for a new exercise with already given specifications
