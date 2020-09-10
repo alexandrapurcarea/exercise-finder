@@ -38,7 +38,6 @@ We would love to implement **stretch recommendations**, **full workout plans** (
  - [x] Make existing prompts sound more natural.
  - [x] Improve help messages for equipment and body part requests (enumerate all options).
  - **Edge cases**
- - [ ] Replace '°' with "degrees" in Alexa responses.
  - [ ] Create handling for failed success matches of slot values.
 - **New Features**
  - [ ] Allow for users to give muscles as input.
