@@ -44,9 +44,5 @@ We would love to implement **stretch recommendations**, **full workout plans** (
  - [ ] Allow for users to give muscles as input.
  - [ ] Allow for users to reprompt for a new exercise with already given specifications
  - [ ] Allow user to repeat specific steps in an instruction
- - [ ] Allow for single factor search (just body part or equipment)
- - [ ] Get body part info about an exercise
- - [ ] Get equipment info about an exercise
- - [ ] Get muscles info about an exercise
  - [ ] Show images of exercise
  - [ ] Create a to do list of exercises matching your specifications
