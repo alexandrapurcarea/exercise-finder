@@ -35,8 +35,8 @@ We would love to implement **stretch recommendations**, **full workout plans** (
  - [x] Create Alexa conversation model for exercise recommendations.
  - [x] Implement wger Workout Manager REST API.
 - **User experience**
- - [ ] Make existing prompts sound more natural.
- - [ ] Improve help messages for equipment and body part requests (enumerate all options).
+ - [x] Make existing prompts sound more natural.
+ - [x] Improve help messages for equipment and body part requests (enumerate all options).
  - **Edge cases**
  - [ ] Replace '°' with "degrees" in Alexa responses.
  - [ ] Create handling for failed success matches of slot values.
