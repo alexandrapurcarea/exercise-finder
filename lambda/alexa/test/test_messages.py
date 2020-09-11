@@ -9,10 +9,12 @@ def test_format_description():
     result = messages.format_description(description) 
 
     assert result == (
-        "- Hello world" 
+            messages.EMPHASIS_START
+            + "- Hello world" 
             + messages.PAUSE 
             + messages.STEP_END 
             + "  I dunno man" 
             + messages.PAUSE 
             + messages.STEP_END
+            + messages.EMPHASIS_END
         )

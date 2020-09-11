@@ -6,6 +6,9 @@ import random
 
 # Constants
 
+# To be considered detailed, a description must have a certain number of characters.
+MIN_DESCRIPTION_LENGTH = 50
+
 # Maximum number of entries per search query.
 PAGINATION = 100
 
@@ -47,9 +50,17 @@ DEFAULT_PARAMS = {
 
 def exercise_finder(category_name, equipment_name):
     """Return an exercise from the Wger API of 
-    a certain category and equipment."""
-    # type: (str, str) -> dict[str, Any]
-    return random.choice(exercise_search(category_name, equipment_name))
+    a certain category and equipment. The a valid exercise must have a detailed description"""
+    # type: (str, str) -> Union[dict[str, Any], None]
+    
+    exercises = [exercise for exercise in exercise_search(category_name, equipment_name) if len(exercise["description"]) > MIN_DESCRIPTION_LENGTH ]
+    
+    if exercises:
+        result = random.choice(exercises)
+    else:
+        result = None
+        
+    return result
 
 
 def exercise_info(exercise_name):
@@ -128,7 +139,8 @@ def get_id(url, desired_name):
         if data["next"] is not None:
             result_id = get_id(data["next"], desired_name)
         else:    
-            raise ValueError("Given name did not match any result!")
+            error_message = "Given name did not match any result: {}".format(desired_name)
+            raise ValueError(error_message)
 
     return result_id
 
@@ -140,7 +152,7 @@ def get_exercise_id(exercise_name):
     endpoint = WGER["api_ex_endpoint"] + "?status=" + str(APPROVED_STATUS_ID)
 
     return get_id(gen_api_url(endpoint), exercise_name)
-   
+
 
 def get_category_id(category_name):
     """Get the category ID given the category name."""

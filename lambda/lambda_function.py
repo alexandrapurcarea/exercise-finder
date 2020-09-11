@@ -6,7 +6,6 @@ import logging
 import json
 
 from ask_sdk_model import Response
-from ask_sdk_model.slu.entityresolution import StatusCode
 
 import ask_sdk_core.utils as ask_utils
 from ask_sdk_core.skill_builder import SkillBuilder
@@ -42,18 +41,37 @@ class GetRecommendationAPIHandler(AbstractRequestHandler):
         
         api_request = handler_input.request_envelope.request.api_request
         
-        body_part = resolve_entity(api_request.slots, "bodyPart").capitalize()
-        equipment = resolve_entity(api_request.slots, "equipment").capitalize()
+        body_part = extra_ask_utils.resolve_entity(api_request.slots, "bodyPart")
+        equipment = extra_ask_utils.resolve_entity(api_request.slots, "equipment")
         
         recommendation_entity = {}
-        if (body_part != None) and (equipment != None):
+        if (body_part is not None) and (equipment is not None):
+            recommendation_entity["bodyPart"] = body_part.capitalize()
+            
+            if (equipment == messages.EQUIP_EDGE_CASE):
+                recommendation_entity["equipment"] = equipment
+            else:    
+                recommendation_entity["equipment"] = equipment.capitalize()
+            
+            exercise = wger_api.exercise_finder(
+                recommendation_entity["bodyPart"], 
+                recommendation_entity["equipment"]
+            )
+            logger.info("Response from Wger API: {}".format(exercise))
+            
+            if exercise is None:
+                exercise_name = messages.EXERCISE_NOT_FOUND
+            else:
+                exercise_name = exercise["name"]
+            
+            recommendation_entity["exerciseName"] = exercise_name
+        else:
             recommendation_entity["bodyPart"] = body_part
             recommendation_entity["equipment"] = equipment
-
-            api_response = wger_api.exercise_finder(body_part, equipment)
-            logger.info("Response from Wger API: {}".format(api_response))
-
-            recommendation_entity["exerciseName"] = api_response["name"]
+            recommendation_entity["exerciseName"] = messages.EXERCISE_NOT_FOUND    
+            
+            logger.info("Faulty Response: {}".format(recommendation_entity))
+            
             
         response = extra_ask_utils.build_success_api_response(recommendation_entity)
         return response
@@ -66,7 +84,7 @@ class GetDescriptionAPIHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> bool
         return (
             ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
-            and extra_ask_utils.is_api_request_name("getDescription")(handler_input)
+                and extra_ask_utils.is_api_request_name("getDescription")(handler_input)
         )
          
     def handle(self, handler_input):
@@ -78,18 +96,20 @@ class GetDescriptionAPIHandler(AbstractRequestHandler):
         api_response = "I don't know much about {}.".format(exercise_name)
         
         description_entity = {}
-        if (exercise_name != None):
-            api_response = wger_api.exercise_info(exercise_name)
+        if (exercise_name == messages.EXERCISE_NOT_FOUND) or (exercise_name is None):
+            exercise_description = messages.NOT_FOUND_DESCRIPTION 
+        else: 
+            exercise_description = messages.format_description(
+                wger_api.exercise_info(exercise_name)["description"]
+            )
             logger.info("Response from Wger API: {}".format(api_response))
-                
-            description_entity["description"] = messages.format_description(api_response["description"])
-        
+
+        description_entity["description"] = exercise_description
         response = extra_ask_utils.build_success_api_response(description_entity)
         return response
 
 
 # Standard Request Handler
-
 class SessionEndedRequestHandler(AbstractRequestHandler):
     """Handler for Session End."""
 
@@ -142,27 +162,6 @@ class ResponseLogger(AbstractResponseInterceptor):
     def process(self, handler_input, response):
         # type: (HandlerInput, Response) -> None
         logger.info('Response generated: {}'.format(response))
-
-
-# Utility
-
-def resolve_entity(resolvedEntity, slot):
-    """Resolve the slot name from the API request resolutions."""
-    # type: (ResolvedEntity, str) -> str
-    
-    value = None
-    
-    try:
-        erAuthorityResolution = resolvedEntity[slot].resolutions.resolutions_per_authority[0]
-        
-        if (erAuthorityResolution.status.code == StatusCode.ER_SUCCESS_MATCH):
-            value = erAuthorityResolution.values[0].value.name
-            
-    except (AttributeError, ValueError, KeyError, IndexError, TypeError) as e:
-        logger.info("Couldn't resolve {} from slots: {}".format(slot, resolvedEntity))
-        logger.info(str(e))
-        
-    return value   
 
 
 # Skillbuilder 
