@@ -37,9 +37,12 @@ We would love to implement **stretch recommendations**, **full workout plans** (
 - **User experience**
  - [x] Make existing prompts sound more natural.
  - [x] Improve help messages for equipment and body part requests (enumerate all options).
+- **Edge Cases**
+ - [x] No exercise found.
+ - [x] Handle unsuccesful slot match.
 - **New Features**
  - [ ] Allow users to press buttons when requesting to do something.
- - [ ] Allow for users to reprompt for a new exercise with already given specifications
+ - [x] Allow for users to reprompt for a new exercise with already given specifications.
  - [ ] Allow user to repeat specific steps in an instruction
  - [ ] Show images of exercise
  - [ ] Create a to do list of exercises matching your specifications
