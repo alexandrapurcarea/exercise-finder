@@ -46,7 +46,7 @@ We would love to implement **stretch recommendations**, **full workout plans** (
 - [Dumitriu Robert](https://www.iconfinder.com/icons/3289577/fast_run_running_icon) ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
 
 #### The following creator provided the font used in our skill's visual responses
-- [Dalton Maag Ltd] (https://www.onlinewebfonts.com/author/Dalton_Maag_Ltd)([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
+- [Dalton Maag Ltd](https://www.onlinewebfonts.com/author/Dalton_Maag_Ltd) ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
 
 ### TODO
 - **Basics**
