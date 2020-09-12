@@ -22,7 +22,7 @@ We used the **Python ASK SDK** for the Alexa backend, in combination with the **
 We encountered problems **implementing request handlers** for the Alexa Conversation API using **Python**, as most learning resources **catered to Node.js**. To overcome this, we had to spend a lot of time really getting to know **how to debug Alexa skills**, via the **test simulator** and **Amazon CloudWatch**. Although it brought much frustration, it was ultimately a great learning experience on troubleshooting.
 
 ## Accomplishments that we're proud of
-- We are proud of our skill. It was the **first self-made Alexa skill** (not following a tutorial).
+- We are proud of our skill. It was our **first self-made Alexa skill** (not following a tutorial).
 - We are proud of our **systematic and methodical thinking** when it came to solving bugs, as many of them were undocumented, given how new Alexa Conversations is.
 
 ## What we learned
@@ -32,6 +32,16 @@ We encountered problems **implementing request handlers** for the Alexa Conversa
 
 ## What's next for Exercise Finder
 We would love to implement **stretch recommendations**, **full workout plans** (including the **duration/amount** of each exercise) and make the **instructions more intuitive**, whether that is through augmenting exercise descriptions to **cater to an auditory medium**, or providing more **insightful visual media**.
+
+### Acknowledgments
+
+#### We used the following pictures.
+- This picture by [Mark Adriane](https://unsplash.com/photos/xQghSLXYD3M) on [Unsplash](https://unsplash.com/)
+- This picture by [Victor Freitas](https://unsplash.com/photos/WvDYdXDzkhs) on [Unsplash](https://unsplash.com/)
+- This picture by [Yulissa Tagle](https://unsplash.com/photos/2YCy6l14Opo) on [Unsplash](https://unsplash.com/)
+- This picture by [Bruce Mars](https://unsplash.com/photos/gJtDg6WfMlQ) on [Unsplash](https://unsplash.com/)
+- This picture by [Sergio Pedemonte](https://unsplash.com/photos/LqtHvyd80Mo) on [Unsplash](https://unsplash.com/)
+- This picture by [Larry Crayton](https://unsplash.com/photos/ICwuKvw9QJk) on [Unsplash](https://unsplash.com/)
 
 ### TODO
 - **Basics**
