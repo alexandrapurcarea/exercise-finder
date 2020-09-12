@@ -4,7 +4,7 @@
 
 <p align="center">
  <a href="https://travis-ci.com/alexandrapurcarea/exercise-finder" alt="Build Status">
-     <img src="https://travis-ci.com/alexandrapurcarea/exercise-finder.svg?token=6xymSqzTey1a1nyeaEG9&branch=master" /></a>
+     <img src="https://travis-ci.com/alexandrapurcarea/exercise-finder.svg?branch=master" /></a>
   <a href="/LICENSE">
      <img src="https://img.shields.io/github/license/alexandrapurcarea/exercise-finder" /></a>
 </p> 
