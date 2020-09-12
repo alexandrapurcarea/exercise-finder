@@ -33,31 +33,32 @@ We encountered problems **implementing request handlers** for the Alexa Conversa
 ## What's next for Exercise Finder
 We would love to implement **stretch recommendations**, **full workout plans** (including the **duration/amount** of each exercise) and make the **instructions more intuitive**, whether that is through augmenting exercise descriptions to **cater to an auditory medium**, or providing more **insightful visual media**.
 
-### Acknowledgments
+## Acknowledgments
 
-#### We used the following pictures.
-- This picture by [Mark Adriane](https://unsplash.com/photos/xQghSLXYD3M) on [Unsplash](https://unsplash.com/)
-- This picture by [Victor Freitas](https://unsplash.com/photos/WvDYdXDzkhs) on [Unsplash](https://unsplash.com/)
-- This picture by [Yulissa Tagle](https://unsplash.com/photos/2YCy6l14Opo) on [Unsplash](https://unsplash.com/)
-- This picture by [Bruce Mars](https://unsplash.com/photos/gJtDg6WfMlQ) on [Unsplash](https://unsplash.com/)
-- This picture by [Sergio Pedemonte](https://unsplash.com/photos/LqtHvyd80Mo) on [Unsplash](https://unsplash.com/)
-- This picture by [Larry Crayton](https://unsplash.com/photos/ICwuKvw9QJk) on [Unsplash](https://unsplash.com/)
-- This picture by [Jeff Tumale](https://unsplash.com/photos/bdIWJKLp98U) on [Unsplash](https://unsplash.com/)
-- This picture by [Andrew Valdivia](https://unsplash.com/photos/0-A_G_XeUqc) on [Unsplash](https://unsplash.com/)
+#### The following creators images were used in our skills visual responses:
+- [Mark Adriane](https://unsplash.com/photos/xQghSLXYD3M)
+- [Victor Freitas](https://unsplash.com/photos/WvDYdXDzkhs)
+- [Yulissa Tagle](https://unsplash.com/photos/2YCy6l14Opo)
+- [Bruce Mars](https://unsplash.com/photos/gJtDg6WfMlQ)
+- [Sergio Pedemonte](https://unsplash.com/photos/LqtHvyd80Mo)
+- [Larry Crayton](https://unsplash.com/photos/ICwuKvw9QJk)
+- [Jeff Tumale](https://unsplash.com/photos/bdIWJKLp98U)
+- [Andrew Valdivia](https://unsplash.com/photos/0-A_G_XeUqc)
+- [Dumitriu Robert](https://www.iconfinder.com/icons/3289577/fast_run_running_icon) ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
 
 ### TODO
 - **Basics**
- - [x] Create Alexa conversation model for exercise recommendations.
- - [x] Implement wger Workout Manager REST API.
+ - [x] Create basic Alexa conversation model for exercise recommendations.
+ - [x] Implement wger Workout Manager REST API with skill.
 - **User experience**
- - [x] Make existing prompts sound more natural.
+ - [x] Make prompts sound more natural.
  - [x] Improve help messages for equipment and body part requests (enumerate all options).
 - **Edge Cases**
- - [x] No exercise found.
- - [x] Handle unsuccesful slot match.
-- **New Features**
- - [ ] Allow users to press buttons when requesting to do something.
+ - [x] Handle if no exercise was found.
+ - [x] Handle if there was an unsuccessful slot match.
+- **Features**
  - [x] Allow for users to reprompt for a new exercise with already given specifications.
- - [ ] Allow user to repeat specific steps in an instruction
- - [ ] Show images of exercise
- - [ ] Create a to do list of exercises matching your specifications
+ - [ ] Create a to do list of exercises matching your specifications.
+ - [ ] Allow user to repeat specific steps in an instruction.
+ - [ ] Show images of exercise (currently unsupported by Alexa Conversations).
+ - [ ] Allow users to press buttons when requesting to do something (currently unsupported by Alexa Conversations).
