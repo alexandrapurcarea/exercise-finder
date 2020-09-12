@@ -34,8 +34,7 @@ We encountered problems **implementing request handlers** for the Alexa Conversa
 We would love to implement **stretch recommendations**, **full workout plans** (including the **duration/amount** of each exercise) and make the **instructions more intuitive**, whether that is through augmenting exercise descriptions to **cater to an auditory medium**, or providing more **insightful visual media**.
 
 ## Acknowledgments
-
-#### The following creators images were used in our skills visual responses:
+#### The following creators images were used in our skill's visual responses:
 - [Mark Adriane](https://unsplash.com/photos/xQghSLXYD3M)
 - [Victor Freitas](https://unsplash.com/photos/WvDYdXDzkhs)
 - [Yulissa Tagle](https://unsplash.com/photos/2YCy6l14Opo)
@@ -45,6 +44,9 @@ We would love to implement **stretch recommendations**, **full workout plans** (
 - [Jeff Tumale](https://unsplash.com/photos/bdIWJKLp98U)
 - [Andrew Valdivia](https://unsplash.com/photos/0-A_G_XeUqc)
 - [Dumitriu Robert](https://www.iconfinder.com/icons/3289577/fast_run_running_icon) ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
+
+#### The following creator provided the font used in our skill's visual responses
+- [Dalton Maag Ltd] (https://www.onlinewebfonts.com/author/Dalton_Maag_Ltd)([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode))
 
 ### TODO
 - **Basics**
