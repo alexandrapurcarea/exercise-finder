@@ -60,6 +60,7 @@ We would love to implement **stretch recommendations**, **full workout plans** (
  - [x] Handle if there was an unsuccessful slot match.
 - **Features**
  - [x] Allow for users to reprompt for a new exercise with already given specifications.
+ - [x] Show guiding images for body parts and equipment.
  - [ ] Create a to do list of exercises matching your specifications.
  - [ ] Allow user to repeat specific steps in an instruction.
  - [ ] Show images of exercise (currently unsupported by Alexa Conversations).
