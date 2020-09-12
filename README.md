@@ -5,6 +5,9 @@
 <p align="center">
  <a href="https://travis-ci.com/alexandrapurcarea/exercise-finder" alt="Build Status">
      <img src="https://travis-ci.com/alexandrapurcarea/exercise-finder.svg?token=6xymSqzTey1a1nyeaEG9&branch=master" /></a>
+  <a href="/LICENSE">
+     <img src="https://img.shields.io/github/license/alexandrapurcarea/exercise-finder" /></a>
+</p> 
 
 # Exercise Finder
 Being stuck in **self-isolation**, we have been spending time **looking for exercise resources** to help maintain fitness. Creating your own workout plan involves having to **look up exercises** that **match** your **equipment** and what parts of your **body** you want to focus on. We realised that this whole process could be greatly simplified by using Alexa as your **personal training coach**, giving you educated recommendations on what exercises to do. 
