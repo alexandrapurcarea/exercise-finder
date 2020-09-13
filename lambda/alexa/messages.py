@@ -2,11 +2,6 @@
 
 import random
 
-# getRecommendation API
-
-# This is the only equipment case where capitalization should be removed.
-EQUIP_EDGE_CASE = "none (bodyweight exercise)"
-
 
 # getDescription API 
 

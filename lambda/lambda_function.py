@@ -47,11 +47,7 @@ class GetRecommendationAPIHandler(AbstractRequestHandler):
         recommendation_entity = {}
         if (body_part is not None) and (equipment is not None):
             recommendation_entity["bodyPart"] = body_part.capitalize()
-            
-            if (equipment == messages.EQUIP_EDGE_CASE):
-                recommendation_entity["equipment"] = equipment
-            else:    
-                recommendation_entity["equipment"] = equipment.capitalize()
+            recommendation_entity["equipment"] = wger_api.format_equipment(equipment)
             
             exercise = wger_api.exercise_finder(
                 recommendation_entity["bodyPart"], 

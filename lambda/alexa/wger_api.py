@@ -4,7 +4,11 @@ import requests
 import json
 import random
 
+
 # Constants
+
+# This is the only equipment case where capitalization should be removed.
+EQUIP_EDGE_CASE = "none (bodyweight exercise)"
 
 # To be considered detailed, a description must have a certain number of characters.
 MIN_DESCRIPTION_LENGTH = 50
@@ -48,6 +52,7 @@ DEFAULT_PARAMS = {
 
 # Functions
 
+
 def exercise_finder(category_name, equipment_name):
     """Return an exercise from the Wger API of 
     a certain category and equipment. The a valid exercise must have a detailed description"""
@@ -81,6 +86,26 @@ def exercise_info(exercise_name):
 
 
 # Helpers
+
+def exercise_search(category_name, equipment_name):
+    """Return a list of exercises from the Wger API with 
+    a certain category ID and equipment ID."""
+    # type: (str, str) -> dict[str, Any]
+
+    http_options = {
+        "url" : gen_api_url(WGER["api_ex_endpoint"]),
+        "headers" : DEFAULT_HEADER,
+        "params" : {
+            "limit" : PAGINATION,
+            "status" : APPROVED_STATUS_ID,
+            "language" : EN_LANG_ID,
+            "category" : get_category_id(category_name),
+            "equipment" : get_equipment_id(equipment_name)
+        }
+    }
+
+    return http_get_json(http_options)["results"]
+
 
 def http_get_json(http_options):
     """Return a HTTP get request for JSON content."""
@@ -166,21 +191,13 @@ def get_equipment_id(equipment_name):
     return get_id(gen_api_url(WGER["api_equipment_endpoint"]), equipment_name)
 
 
-def exercise_search(category_name, equipment_name):
-    """Return a list of exercises from the Wger API with 
-    a certain category ID and equipment ID."""
-    # type: (str, str) -> dict[str, Any]
+def format_equipment(equipment_name):
+    """Format the name of the equipment for the API query."""
+    # type: (str) -> str
 
-    http_options = {
-        "url" : gen_api_url(WGER["api_ex_endpoint"]),
-        "headers" : DEFAULT_HEADER,
-        "params" : {
-            "limit" : PAGINATION,
-            "status" : APPROVED_STATUS_ID,
-            "language" : EN_LANG_ID,
-            "category" : get_category_id(category_name),
-            "equipment" : get_equipment_id(equipment_name)
-        }
-    }
-
-    return http_get_json(http_options)["results"]
+    if (equipment_name == EQUIP_EDGE_CASE):
+        result = equipment_name
+    else:    
+        result = equipment_name.capitalize()
+    
+    return result

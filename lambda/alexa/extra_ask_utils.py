@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 from ask_sdk_model.slu.entityresolution import StatusCode
 
 
