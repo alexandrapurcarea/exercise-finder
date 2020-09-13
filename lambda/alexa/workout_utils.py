@@ -50,7 +50,7 @@ def create_workout(workout_queries):
     for (category, equipment) in workout_queries:
         exercise = wger_api.exercise_finder(category, equipment)["name"]
 
-        if exercise:
+        if exercise is not None:
             workout.append(exercise)
 
     return (workout, len(workout) == len(workout_queries))

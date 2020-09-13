@@ -7,33 +7,21 @@ import random
 
 NEWLINE = "\n"
 
-# Signifies the end of a instruction step.
-STEP_END = "."
+# HTML paragraph code.
+HTML_PARAGRAPH_START = "<p>"
+HTML_PARAGRAPH_END = "</p>"
 
-# Length of pauses between steps in seconds.
-PAUSE_DURATION = 1
-
-# Pause formatting in SSML.
-PAUSE = '<break time="{}s"/>'.format(str(PAUSE_DURATION))
-
-# Emphasis formatting in SSML.
-
-EMPHASIS_START = "<emphasis level='moderate'>" 
-
-EMPHASIS_END = "</emphasis>"
 
 def format_description(description):
     """Format the description response such that it sounds natural for Alexa to say."""
     # type: (str) -> str
-
-    # Remove newlines from Alexa response.
-    description = description.replace(NEWLINE, " ")
-
-    # Add pauses to allow user to process instructions.
-    description = description.replace(STEP_END, PAUSE + STEP_END)
     
-    # Add emphasis to the instructions
-    description = EMPHASIS_START +  description + EMPHASIS_END
+    # Remove newlines.
+    description = description.replace(NEWLINE, " ")
+    
+    # Removes HTML
+    description = description.replace(HTML_PARAGRAPH_START, " ")
+    description = description.replace(HTML_PARAGRAPH_END, " ")
     
     return description
 

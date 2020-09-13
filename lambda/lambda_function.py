@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from alexa import extra_ask_utils, wger_api, messages
+from alexa import extra_ask_utils, workout_utils, wger_api, messages
 
 import logging
 import json
@@ -24,6 +24,52 @@ logger.setLevel(logging.INFO)
 
 
 # Custom Request Handlers
+
+class createWorkoutAPIHandler(AbstractRequestHandler):
+    """Handler for createWorkout API requests. TODO"""
+
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return (
+            ask_utils.is_request_type("Dialog.API.Invoked")(handler_input) 
+                and extra_ask_utils.is_api_request_name("createWorkout")(handler_input)
+        )
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In createWorkoutAPIHandler")
+        
+        api_request = handler_input.request_envelope.request.api_request
+        
+        body_part_i = extra_ask_utils.resolve_entity(api_request.slots, "bodyPart_I")
+        body_part_ii = extra_ask_utils.resolve_entity(api_request.slots, "bodyPart_II")
+        body_part_iii = extra_ask_utils.resolve_entity(api_request.slots, "bodyPart_III")
+        equipment_i = extra_ask_utils.resolve_entity(api_request.slots, "equipment_I")
+        equipment_ii = extra_ask_utils.resolve_entity(api_request.slots, "equipment_II")
+        equipment_iii = extra_ask_utils.resolve_entity(api_request.slots, "equipment_III")
+        numberExs = extra_ask_utils.resolve_entity(api_request.slots, "numberExs")
+        
+        body_parts = [
+            body_part_i,
+            body_part_ii,
+            body_part_iii
+        ]
+
+        equipment = [
+            equipment_i,
+            equipment_ii,
+            equipment_iii
+        ]
+
+        exercise_queries = workout_utils.create_workout_queries(body_parts, equipment, numberExs)
+        (workout, create_success) = workout_utils.create_workout(exercise_queries)
+        logger.info("Response from Wger API: {}".format(workout))
+
+        workout_entity = {"workoutResult" : ""}
+
+        response = extra_ask_utils.build_success_api_response(workout_entity)
+        return response
+
 
 class GetRecommendationAPIHandler(AbstractRequestHandler):
     """Handler for getRecommendation API requests."""
@@ -89,18 +135,14 @@ class GetDescriptionAPIHandler(AbstractRequestHandler):
         
         recommendation_result = handler_input.request_envelope.request.api_request.arguments['recommendationResult']
         exercise_name = recommendation_result["exerciseName"]
-        api_response = "I don't know much about {}.".format(exercise_name)
         
-        description_entity = {}
         if (exercise_name == messages.EXERCISE_NOT_FOUND) or (exercise_name is None):
             exercise_description = messages.NOT_FOUND_DESCRIPTION 
         else: 
-            exercise_description = messages.format_description(
-                wger_api.exercise_info(exercise_name)["description"]
-            )
-            logger.info("Response from Wger API: {}".format(api_response))
+            exercise_description = messages.format_description(wger_api.exercise_info(exercise_name)["description"])
+            logger.info("Response from Wger API: {}".format(exercise_description))
 
-        description_entity["description"] = exercise_description
+        description_entity = {"description" : exercise_description}
         response = extra_ask_utils.build_success_api_response(description_entity)
         return response
 

@@ -5,16 +5,7 @@ from alexa import messages
 
 
 def test_format_description():
-    description = "- Hello world.\n I dunno man."
+    description = "- Hello world.\n I <p>dunno man</p>."
     result = messages.format_description(description) 
 
-    assert result == (
-            messages.EMPHASIS_START
-            + "- Hello world" 
-            + messages.PAUSE 
-            + messages.STEP_END 
-            + "  I dunno man" 
-            + messages.PAUSE 
-            + messages.STEP_END
-            + messages.EMPHASIS_END
-        )
+    assert result == "- Hello world.  I  dunno man ." 
