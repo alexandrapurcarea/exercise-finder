@@ -5,7 +5,7 @@ from alexa import workout_utils, wger_api
 
 # Constants
 
-BODY_PARTS = ["arms", None, "shoulders"]
+BODY_PARTS = ["arms", "shoulders"]
 
 EQUIPMENTS = ["dumbbell", "bench", wger_api.EQUIP_EDGE_CASE]
 
@@ -29,7 +29,7 @@ def test_create_workout_queries():
 
 
 def test_create_workout():
-    (workout, success) = workout_utils.create_workout(QUERIES)
+    workout = workout_utils.create_workout(QUERIES)
 
     length_of_valid_items = len(
         [
@@ -38,5 +38,4 @@ def test_create_workout():
         ]
     )
 
-    assert (len(workout) == NUM_OF_EXERCISES) == success
     assert length_of_valid_items == len(workout)
