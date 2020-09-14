@@ -16,7 +16,7 @@ Being stuck in **self-isolation**, we have been spending time **looking for exer
 Alexa will **recommend you exercises** based on the **body part**, or if you want to be more specific, **muscle**, you want to strengthen and the **equipment** you have available. Further, given your specifications, Alexa can **create a to-do list of exercises** for a workout session. If you want to learn more about an exercise, or do not know how to do it, just ask Alexa, and she will **provide simple instructions** accompanied with **images of the exercise**. 
 
 ## How we built it
-We used the **Python ASK SDK** for the Alexa backend, in combination with the **wger Workout Manager API** to provide the exercise information.
+We used the **Python ASK SDK** for the Alexa backend, in combination with the **wger Workout Manager API** to provide the exercise information. Further, we used the **Alexa list management API** to implement the workout lists.
 
 ## Challenges we ran into
 We encountered problems **implementing request handlers** for the Alexa Conversation API using **Python**, as most learning resources **catered to Node.js**. To overcome this, we had to spend a lot of time really getting to know **how to debug Alexa skills**, via the **test simulator** and **Amazon CloudWatch**. Although it brought much frustration, it was ultimately a great learning experience on troubleshooting.
@@ -61,7 +61,7 @@ We would love to implement **stretch recommendations**, **full workout plans** (
 - **Features**
  - [x] Allow for users to reprompt for a new exercise with already given specifications.
  - [x] Show guiding images for body parts and equipment.
- - [ ] Create a to do list of exercises matching your specifications.
+ - [x] Create a to do list of exercises matching your specifications.
  - [ ] Allow user to repeat specific steps in an instruction.
  - [ ] Show images of exercise (currently unsupported by Alexa Conversations).
  - [ ] Allow users to press buttons when requesting to do something (currently unsupported by Alexa Conversations).
