@@ -13,7 +13,7 @@
 Being stuck in **self-isolation**, we have been spending time **looking for exercise resources** to help maintain fitness. Creating your own workout plan involves having to **look up exercises** that **match** your **equipment** and what parts of your **body** you want to focus on. We realised that this whole process could be greatly simplified by using Alexa as your **personal training coach**, giving you educated recommendations on what exercises to do. 
 
 ## What it does
-Alexa will **recommend you exercises** based on the **body part**, or if you want to be more specific, **muscle**, you want to strengthen and the **equipment** you have available. Further, given your specifications, Alexa can **create a to-do list of exercises** for a workout session. If you want to learn more about an exercise, or do not know how to do it, just ask Alexa, and she will **provide simple instructions** accompanied with **images of the exercise**. 
+Alexa will **recommend you exercises** based on the **body part** you want to strengthen and the **equipment** you have available. Further, given your specifications, Alexa can **create a to-do list of exercises** for a workout session. If you want to learn more about an exercise, or do not know how to do it, just ask Alexa, and she will **provide simple instructions**. 
 
 ## How we built it
 We used the **Python ASK SDK** for the Alexa backend, in combination with the **wger Workout Manager API** to provide the exercise information. Further, we used the **Alexa list management API** to implement the workout lists.
