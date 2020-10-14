@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+import re
 
 # createWorkout API
 
@@ -19,32 +20,32 @@ CREATE_LIST_REQUEST = {
 
 # Fails
 
-CREATEWORKOUT_EXCEPTION_START = "Sorry, I did not create a workout list."
-
-NOT_ENOUGH_VALID_ARGUMENTS = CREATEWORKOUT_EXCEPTION_START + (
+NOT_ENOUGH_VALID_ARGUMENTS = (
     "I wasn't able to understand any of what you said. "
     "Please try again, with valid body parts, equipment "
     "and number of exercises."
 )
 
-INVALID_NUM_EXERCISES = CREATEWORKOUT_EXCEPTION_START + (
+INVALID_NUM_EXERCISES = (
     "The number of exercises for the workout must be between 1 and 10. "
     "Please try again with a valid number."
 )
 
-NO_EXERCISES_FOUND = CREATEWORKOUT_EXCEPTION_START + (
+NO_EXERCISES_FOUND = (
     "I was not able to find any exercises matching your criteria. "
     "Try again with different preferences."
 )
 
-MISSING_PERMISSIONS = CREATEWORKOUT_EXCEPTION_START + (
+MISSING_PERMISSIONS = (
     "I do not have the permissions to read and write lists for you. "
     "You must change the skill permissions to allow for this."
 )
 
-LIST_FAILURE = CREATEWORKOUT_EXCEPTION_START + (
+LIST_FAILURE = (
     "There was an unexpected failure when accessing your lists. Try again some other time."
 )
+
+LESS_EXERCISES = "The number of exercises I found was less than you wanted, but "
 
 # Successes
 
@@ -72,8 +73,10 @@ def format_description(description):
     # type: (str) -> str
     
     # Remove newlines.
-    description = description.replace(NEWLINE, " ")
+    html_regex = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+    clean_description = re.sub(html_regex, ' ', description)
     
+    """
     # Removes HTML
     description = description.replace(HTML_PARAGRAPH_START, " ")
     description = description.replace(HTML_PARAGRAPH_END, " ")
@@ -81,17 +84,18 @@ def format_description(description):
     description = description.replace(HTML_SOMETHING_END, " ")
     description = description.replace(HTML_SOMETHING_2_START, " ")
     description = description.replace(HTML_SOMETHING_2_END, " ")
+    """
     
-    return description
+    return clean_description
 
 
 # Exceptions
 
 # General exception message
-EXCEPTION_MSG = "Sorry, I had trouble doing what you asked. Please try again."
+EXCEPTION_MSG = "Please try again."
 
 # If no exercise was found by the exercise finder.
 EXERCISE_NOT_FOUND = "no exercise"
 
 # Description if not exercise was found.
-NOT_FOUND_DESCRIPTION = "Sorry, I did not find any exercise matching your preferences. Try to find an exercise with different equipment or body part."
+NOT_FOUND_DESCRIPTION = "Try to find an exercise with different equipment or body part."
