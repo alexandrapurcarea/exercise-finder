@@ -58,16 +58,6 @@ NOT_ALL_QUERIES_MATCHED = (
 
 # getDescription API 
 
-NEWLINE = "\n"
-
-# HTML paragraph code.
-HTML_PARAGRAPH_START = "<p>"
-HTML_PARAGRAPH_END = "</p>"
-HTML_SOMETHING_START = "<ol>"
-HTML_SOMETHING_END = "</ol>"
-HTML_SOMETHING_2_START = "<li>"
-HTML_SOMETHING_2_END = "</li>"
-
 def format_description(description):
     """Format the description response such that it sounds natural for Alexa to say."""
     # type: (str) -> str
@@ -75,16 +65,6 @@ def format_description(description):
     # Remove newlines.
     html_regex = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
     clean_description = re.sub(html_regex, ' ', description)
-    
-    """
-    # Removes HTML
-    description = description.replace(HTML_PARAGRAPH_START, " ")
-    description = description.replace(HTML_PARAGRAPH_END, " ")
-    description = description.replace(HTML_SOMETHING_START, " ")
-    description = description.replace(HTML_SOMETHING_END, " ")
-    description = description.replace(HTML_SOMETHING_2_START, " ")
-    description = description.replace(HTML_SOMETHING_2_END, " ")
-    """
     
     return clean_description
 
