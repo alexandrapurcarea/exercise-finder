@@ -8,4 +8,4 @@ def test_format_description():
     description = "- Hello world.\n I <p>dunno man</p>."
     result = messages.format_description(description) 
 
-    assert result == "- Hello world.  I  dunno man ." 
+    assert result == "- Hello world.\n I  dunno man ." 
